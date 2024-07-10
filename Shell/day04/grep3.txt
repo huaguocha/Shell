@@ -1,0 +1,62 @@
+在自己虚拟机里创建如下内容的文件：
+# cat test.txt 
+Aieur45869Root0000
+9h847RkjfkIIIhello
+rootHllow88000dfjj
+8ikuioerhfhupliooking
+hello world
+192.168.0.254
+welcome to uplooking.
+abcderfkdjfkdtest
+rlllA899kdfkdfj
+iiiA848890ldkfjdkfj
+abc
+12345678908374
+123456@qq.com
+123456@163.com
+abcdefg@itcast.com23ed
+
+要求:
+    a. 查找不以大写字母开头的行(三种写法)
+    b. 查找有数字的行(两种写法)
+    c. 查找一个数字和一个字母连起来的
+    d. 查找不以r开头的行
+    e. 查找以数字开头的
+    f. 查找以大写字母开头的
+    g. 查找以小写字母开头的
+    h. 查找以点结束的
+    i. 去掉空行
+    j. 查找完全匹配abc的行
+    k. 查找A后有三个数字的行
+    m. 统计root在/etc/passwd里出现了几次
+    n. 用正则表达式找出自己的IP地址、广播地址、子网掩码
+
+a. 查找不以大写字母开头的行(三种写法)
+        grep ^[^[:upper:]] test.txt
+        grep ^[^A-Z] test.txt
+        grep ^[a-z0-9] test.txt
+b. 查找有数字的行(两种写法)
+       grep [0-9] test.txt
+       grep -P '\d' test.txt
+ c. 查找一个数字和一个字母连起来的
+      grep [0-9][a-zA-Z] test.txt
+ d. 查找不以r开头的行
+      grep ^[^r] test.txt
+ e. 查找以数字开头的
+     grep ^[0-9] test.txt
+  f. 查找以大写字母开头的
+    grep ^[A-Z] test.txt
+ g. 查找以小写字母开头的
+     grep ^[a-z]  test.txt
+  h. 查找以点结束的
+    grep  [.]$ test.txt
+ i. 去掉空行
+    grep ^$ test.txt   
+  j. 查找完全匹配abc的行
+   grep "\(abc\)" test.txt
+k. 查找A后有三个数字的行
+    grep [A][0-9][0-9][0-9] test.txt
+m. 统计root在/etc/passwd里出现了几次
+     grep -o "root" /etc/passwd | wc -w
+ n. 用正则表达式找出自己的IP地址、广播地址、子网掩码
+  ifconfig | grep "\<inet\>"
